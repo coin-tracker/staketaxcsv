@@ -1,22 +1,22 @@
 import logging
 from datetime import datetime
 
-import common.ibc.api_lcd
-from atom.config_atom import localconfig
-from atom.constants import CHAIN_ID_COSMOHUB3, CHAIN_ID_COSMOHUB4, CUR_ATOM, MILLION
-from atom.cosmoshub3.make_tx import make_atom_reward_tx, make_transfer_receive_tx
-from atom.TxInfoAtom import TxInfoAtom
-from common.ErrorCounter import ErrorCounter
-from common.ExporterTypes import (
+import staketaxcsv.common.ibc.api_lcd
+from staketaxcsv.atom.config_atom import localconfig
+from staketaxcsv.atom.constants import CHAIN_ID_COSMOHUB3, CHAIN_ID_COSMOHUB4, CUR_ATOM, MILLION
+from staketaxcsv.atom.cosmoshub3.make_tx import make_atom_reward_tx, make_transfer_receive_tx
+from staketaxcsv.atom.TxInfoAtom import TxInfoAtom
+from staketaxcsv.common.ErrorCounter import ErrorCounter
+from staketaxcsv.common.ExporterTypes import (
     TX_TYPE_STAKING_DELEGATE,
     TX_TYPE_STAKING_REDELEGATE,
     TX_TYPE_STAKING_UNDELEGATE,
     TX_TYPE_UNKNOWN,
     TX_TYPE_VOTE,
 )
-from common.make_tx import make_simple_tx, make_transfer_out_tx
-from settings_csv import ATOM_NODE
-from common.ibc.MsgInfoIBC import MsgInfoIBC
+from staketaxcsv.common.ibc.MsgInfoIBC import MsgInfoIBC
+from staketaxcsv.common.make_tx import make_simple_tx, make_transfer_out_tx
+from staketaxcsv.settings_csv import ATOM_NODE
 
 
 def process_tx(wallet_address, elem, exporter):

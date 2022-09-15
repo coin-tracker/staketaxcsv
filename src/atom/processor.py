@@ -1,11 +1,11 @@
-import common.ibc.api_lcd
-from atom.config_atom import localconfig
-from atom.cosmoshub3.make_tx import make_atom_reward_tx
-from settings_csv import ATOM_NODE
-import common.ibc.processor
-import common.ibc.handle
-import atom.constants as co
-import atom.cosmoshub3.processor
+import staketaxcsv.atom.constants as co
+import staketaxcsv.atom.cosmoshub3.processor
+import staketaxcsv.common.ibc.api_lcd
+import staketaxcsv.common.ibc.handle
+import staketaxcsv.common.ibc.processor
+from staketaxcsv.atom.config_atom import localconfig
+from staketaxcsv.atom.cosmoshub3.make_tx import make_atom_reward_tx
+from staketaxcsv.settings_csv import ATOM_NODE
 
 
 def process_txs(wallet_address, elems, exporter):
