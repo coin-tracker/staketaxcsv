@@ -1,6 +1,6 @@
 import bech32
 import logging
-import sha3
+import hashlib
 from typing import List, Optional
 
 
@@ -10,7 +10,7 @@ def _checksum_encode(address: List[int]):
     hex_addr = bytes(address).hex()
     checksummed_buffer = ""
 
-    k = sha3.keccak_256()
+    k = hashlib.sha3_256()
     k.update(hex_addr.encode("utf-8"))
     hashed_address = k.digest().hex()
 
