@@ -11,6 +11,7 @@ from urllib.parse import urlencode
 import requests
 from staketaxcsv.common.ibc.api_common import EVENTS_TYPE_RECIPIENT, EVENTS_TYPE_SENDER, EVENTS_TYPE_SIGNER
 from staketaxcsv.settings_csv import TERRA_LCD_NODE
+from staketaxcsv.common.ibc.api_lcd_cosmwasm import CosmWasmLcdAPI
 
 LIMIT_TX_QUERY = 50
 
@@ -20,10 +21,40 @@ class LcdAPI:
 
     @classmethod
     def contract_info(cls, contract):
-        uri = "/cosmwasm/wasm/contract/{}".format(contract)
-        logging.info("Querying lcd for contract = %s ...", contract)
-        data = cls._query(uri, {})
-        return data
+        """This function is called as part of the staketaxcsv transaction parsing process. 
+        The package code contains an API call to a now deprecated function, so the old 
+        code has been commented out and replaced with a function that calls
+        two API endpoints that combine to return the same data as before
+        """
+        # uri = "/wasm/contracts/{}".format(contract)
+        # logging.info("Querying lcd for contract = %s ...", contract)
+        # data = cls._query(uri, {})
+        # return data
+        return LcdAPI.contract_info_from_cosmwasm(contract)
+
+    @classmethod
+    def contract_info_from_cosmwasm(cls, contract):
+        """Calls the contract info and contract history endpoints from CosmWasmLcdAPI 
+        and formats them in the way the old /wasm/contracts/{} endpoint returned data. 
+        This allows the staketaxcsv package to parse the data in the same way it parsed 
+        the old data without having to rewrite a ton of functions.
+
+        The two endpoints combined have the same data as what was previously returned by 
+        the old endpoint, which is now deprecated
+
+        - new "msg" == old "init_msg"
+        - new "contract_info" == old "result"
+        - the first entry returned from contract history["entries"] contains the relevant data
+
+        This is not originally part of the staketaxcsv package
+        """
+        data = CosmWasmLcdAPI(TERRA_LCD_NODE).contract_history(contract)
+        contract_history = data["entries"][0]
+        contract_history["init_msg"] = contract_history["msg"]
+        contract_data = CosmWasmLcdAPI(TERRA_LCD_NODE).contract(contract)
+        contract_data["result"] = contract_data["contract_info"]
+        contract_wasm = contract_data | contract_history
+        return contract_wasm
 
     @classmethod
     def _query(cls, uri_path, query_params, sleep_seconds=1):
