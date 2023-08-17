@@ -89,6 +89,7 @@ class LcdAPI:
 
     @classmethod
     def num_txs(cls, wallet_address):
+        """Endpoint is deprecated"""
         data = cls._get_txs(wallet_address, EVENTS_TYPE_SENDER, 0, LIMIT_TX_QUERY, 0)
         num_send = int(data["pagination"]["total"])
 
