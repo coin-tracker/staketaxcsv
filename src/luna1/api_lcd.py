@@ -21,15 +21,13 @@ class LcdAPI:
 
     @classmethod
     def contract_info(cls, contract):
-        """This function is called as part of the staketaxcsv transaction parsing process. 
+        """Calls the LCD API for contract info for a given contract address.
+        
+        This function is called as part of the staketaxcsv transaction parsing process. 
         The package code contains an API call to a now deprecated function, so the old 
-        code has been commented out and replaced with a function that calls
-        two API endpoints that combine to return the same data as before
+        code has been replaced with a function that calls two API endpoints that combine
+        to return the same data as before
         """
-        # uri = "/wasm/contracts/{}".format(contract)
-        # logging.info("Querying lcd for contract = %s ...", contract)
-        # data = cls._query(uri, {})
-        # return data
         return LcdAPI.contract_info_from_cosmwasm(contract)
 
     @classmethod
