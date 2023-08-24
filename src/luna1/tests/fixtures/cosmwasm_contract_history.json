@@ -1,51 +1,50 @@
 {
-    "entries": [
-      {
-        "code_id": "4",
-        "updated": {
-          "block_height": "13215800",
-          "tx_index": "0"
-        },
-        "msg": {
-          "asset_infos": [
-            {
-              "token": {
-                "contract_addr": "terra1kc87mu460fwkqte29rquh4hc20m54fxwtsx7gp"
-              }
-            },
-            {
-              "native_token": {
-                "denom": "uluna"
-              }
+  "entries": [
+    {
+      "code_id": "4",
+      "updated": {
+        "block_height": "13215800",
+        "tx_index": "0"
+      },
+      "msg": {
+        "asset_infos": [
+          {
+            "token": {
+              "contract_addr": "terra1kc87mu460fwkqte29rquh4hc20m54fxwtsx7gp"
             }
-          ],
-          "init_hook": {
-            "contract_addr": "terra1ulgw0td86nvs4wtpsc80thv6xelk76ut7a7apj",
-            "msg": "eyJyZWdpc3RlciI6eyJhc3NldF9pbmZvcyI6W3sidG9rZW4iOnsiY29udHJhY3RfYWRkciI6InRlcnJhMWtjODdtdTQ2MGZ3a3F0ZTI5cnF1aDRoYzIwbTU0Znh3dHN4N2dwIn19LHsibmF0aXZlX3Rva2VuIjp7ImRlbm9tIjoidWx1bmEifX1dfX0="
           },
-          "token_code_id": 3
-        }
-      },
-      {
-        "code_id": "7596",
-        "updated": {
-          "block_height": "13706338",
-          "tx_index": "2320843"
+          {
+            "native_token": {
+              "denom": "uluna"
+            }
+          }
+        ],
+        "init_hook": {
+          "contract_addr": "terra1ulgw0td86nvs4wtpsc80thv6xelk76ut7a7apj",
+          "msg": "eyJyZWdpc3RlciI6eyJhc3NldF9pbmZvcyI6W3sidG9rZW4iOnsiY29udHJhY3RfYWRkciI6InRlcnJhMWtjODdtdTQ2MGZ3a3F0ZTI5cnF1aDRoYzIwbTU0Znh3dHN4N2dwIn19LHsibmF0aXZlX3Rva2VuIjp7ImRlbm9tIjoidWx1bmEifX1dfX0="
         },
-        "msg": {}
-      },
-      {
-        "code_id": "7604",
-        "updated": {
-          "block_height": "13709148",
-          "tx_index": "480134"
-        },
-        "msg": {}
+        "token_code_id": 3
       }
-    ],
-    "pagination": {
-      "next_key": null,
-      "total": "3"
+    },
+    {
+      "code_id": "7596",
+      "updated": {
+        "block_height": "13706338",
+        "tx_index": "2320843"
+      },
+      "msg": {}
+    },
+    {
+      "code_id": "7604",
+      "updated": {
+        "block_height": "13709148",
+        "tx_index": "480134"
+      },
+      "msg": {}
     }
+  ],
+  "pagination": {
+    "next_key": null,
+    "total": "3"
   }
-  
+}

@@ -47,8 +47,8 @@ class APILCDTest(unittest.TestCase):
             }
             ],
             "init_hook": {
-            "contract_addr": "terra1ulgw0td86nvs4wtpsc80thv6xelk76ut7a7apj",
-            "msg": "eyJyZWdpc3RlciI6eyJhc3NldF9pbmZvcyI6W3sidG9rZW4iOnsiY29udHJhY3RfYWRkciI6InRlcnJhMWtjODdtdTQ2MGZ3a3F0ZTI5cnF1aDRoYzIwbTU0Znh3dHN4N2dwIn19LHsibmF0aXZlX3Rva2VuIjp7ImRlbm9tIjoidWx1bmEifX1dfX0="
+                "contract_addr": "terra1ulgw0td86nvs4wtpsc80thv6xelk76ut7a7apj",
+                "msg": "eyJyZWdpc3RlciI6eyJhc3NldF9pbmZvcyI6W3sidG9rZW4iOnsiY29udHJhY3RfYWRkciI6InRlcnJhMWtjODdtdTQ2MGZ3a3F0ZTI5cnF1aDRoYzIwbTU0Znh3dHN4N2dwIn19LHsibmF0aXZlX3Rva2VuIjp7ImRlbm9tIjoidWx1bmEifX1dfX0="
             },
             "token_code_id": 3
         }
