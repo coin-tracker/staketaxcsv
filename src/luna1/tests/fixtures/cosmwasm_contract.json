@@ -1,0 +1,14 @@
+{
+    "contract_info": {
+      "code_id": "7604",
+      "creator": "terra1ulgw0td86nvs4wtpsc80thv6xelk76ut7a7apj",
+      "admin": "terra1ulgw0td86nvs4wtpsc80thv6xelk76ut7a7apj",
+      "label": "terra1jxazgm67et0ce260kvrpfv50acuushpjsz2y0p",
+      "created": {
+        "block_height": "13215800",
+        "tx_index": "0"
+      },
+      "ibc_port_id": ""
+    }
+  }
+  
