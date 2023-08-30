@@ -1,3 +1,4 @@
+---
 name: Publish cointracker openspec lib
 on:
   push:
