@@ -15,4 +15,4 @@ jobs:
           repository_name: "cointracker"
           repository_url: "https://python.cloudsmith.io/cointracker/pypi/"
           repository_username: ${{ secrets.USERNAME }}
-          repository_password: ${{ secrets.API_KEY }} 
+          repository_password: ${{ secrets.API_KEY }}
