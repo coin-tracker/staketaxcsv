@@ -3,7 +3,7 @@ name: Publish cointracker openspec lib
 on:
   push:
     branches:
-      - main
+      - module
 jobs:
   build:
     runs-on: ubuntu-latest
