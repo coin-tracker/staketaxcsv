@@ -1,0 +1,5 @@
+[tool.poetry]
+name = "staketaxcsv"
+version = "0.0.2"
+description = ""
+authors = ["CoinTracker <eng@cointracker.io>"]

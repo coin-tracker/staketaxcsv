@@ -1,0 +1,19 @@
+---
+name: Publish cointracker openspec lib
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and publish to cointracker private Python package repository
+        uses: JRubics/poetry-publish@v1.10
+        with:
+          repository_name: "cointracker"
+          repository_url: "https://python.cloudsmith.io/cointracker/pypi/"
+          repository_username: ${{ secrets.CLOUDSMITH_USERNAME }}
+          repository_password: ${{ secrets.CLOUDSMITH_API_KEY }}
