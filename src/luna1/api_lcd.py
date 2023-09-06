@@ -40,17 +40,17 @@ class LcdAPI:
         The two endpoints combined have the same data as what was previously returned by 
         the old endpoint, which is now deprecated
 
-        - new "msg" == old "init_msg"
-        - new "contract_info" == old "result"
+        - new ["contract_info"] == old ["result"]
+        - new ["msg"] == old ["result"]["init_msg"]
         - the first entry returned from contract history["entries"] contains the relevant data
 
         This is not originally part of the staketaxcsv package
         """
         data = CosmWasmLcdAPI(TERRA_LCD_NODE).contract_history(contract)
         contract_history = data["entries"][0]
-        contract_history["init_msg"] = contract_history["msg"]
         contract_data = CosmWasmLcdAPI(TERRA_LCD_NODE).contract(contract)
         contract_data["result"] = contract_data["contract_info"]
+        contract_data["result"]["init_msg"] = contract_history["msg"]
         contract_wasm = contract_data | contract_history
         return contract_wasm
 
