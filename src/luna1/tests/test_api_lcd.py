@@ -18,8 +18,7 @@ class APILCDTest(unittest.TestCase):
                 contract_wasm = LcdAPI.contract_info_from_cosmwasm("blah")
 
         assert contract_wasm ["code_id"] == "4"
-        assert contract_wasm["msg"] == contract_wasm["init_msg"]
-        assert contract_wasm["result"] == contract_wasm["contract_info"]
+        assert contract_wasm["result"]["init_msg"] == contract_wasm["msg"]
 
     def test_contract_info_from_cosmwasm(self):
         contract_history = _get_fixture_file_content("cosmwasm_contract_history.json")
@@ -33,25 +32,6 @@ class APILCDTest(unittest.TestCase):
             "block_height": "13215800",
             "tx_index": "0"
         }
-        assert contract_wasm["msg"] == {
-            "asset_infos": [
-            {
-                "token": {
-                "contract_addr": "terra1kc87mu460fwkqte29rquh4hc20m54fxwtsx7gp"
-                }
-            },
-            {
-                "native_token": {
-                "denom": "uluna"
-                }
-            }
-            ],
-            "init_hook": {
-                "contract_addr": "terra1ulgw0td86nvs4wtpsc80thv6xelk76ut7a7apj",
-                "msg": "eyJyZWdpc3RlciI6eyJhc3NldF9pbmZvcyI6W3sidG9rZW4iOnsiY29udHJhY3RfYWRkciI6InRlcnJhMWtjODdtdTQ2MGZ3a3F0ZTI5cnF1aDRoYzIwbTU0Znh3dHN4N2dwIn19LHsibmF0aXZlX3Rva2VuIjp7ImRlbm9tIjoidWx1bmEifX1dfX0="
-            },
-            "token_code_id": 3
-        }
         assert contract_wasm["result"] == {
             "code_id": "7604",
             "creator": "terra1ulgw0td86nvs4wtpsc80thv6xelk76ut7a7apj",
@@ -61,6 +41,26 @@ class APILCDTest(unittest.TestCase):
                 "block_height": "13215800",
                 "tx_index": "0"
             },
-            "ibc_port_id": ""
+            "ibc_port_id": "",
+            "init_msg":
+                {
+                "asset_infos": [
+                {
+                    "token": {
+                    "contract_addr": "terra1kc87mu460fwkqte29rquh4hc20m54fxwtsx7gp"
+                    }
+                },
+                {
+                    "native_token": {
+                    "denom": "uluna"
+                    }
+                }
+                ],
+                "init_hook": {
+                    "contract_addr": "terra1ulgw0td86nvs4wtpsc80thv6xelk76ut7a7apj",
+                    "msg": "eyJyZWdpc3RlciI6eyJhc3NldF9pbmZvcyI6W3sidG9rZW4iOnsiY29udHJhY3RfYWRkciI6InRlcnJhMWtjODdtdTQ2MGZ3a3F0ZTI5cnF1aDRoYzIwbTU0Znh3dHN4N2dwIn19LHsibmF0aXZlX3Rva2VuIjp7ImRlbm9tIjoidWx1bmEifX1dfX0="
+                },
+                "token_code_id": 3
+            }
         }
 
