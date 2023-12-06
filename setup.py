@@ -16,7 +16,7 @@ project_packages = [source_package_regex.sub(PACKAGE_NAME, name) for name in sou
 
 setup(
     name=PACKAGE_NAME,
-    version='0.0.3',
+    version='0.0.4',
     install_requires=required,
     package_dir={PACKAGE_NAME: SOURCE_DIRECTORY},
     packages=project_packages,

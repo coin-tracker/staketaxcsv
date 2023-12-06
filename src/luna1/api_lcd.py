@@ -10,8 +10,8 @@ from urllib.parse import urlencode
 
 import requests
 from staketaxcsv.common.ibc.api_common import EVENTS_TYPE_RECIPIENT, EVENTS_TYPE_SENDER, EVENTS_TYPE_SIGNER
-from staketaxcsv.settings_csv import TERRA_LCD_NODE
 from staketaxcsv.common.ibc.api_lcd_cosmwasm import CosmWasmLcdAPI
+from staketaxcsv.settings_csv import TERRA_LCD_NODE
 
 LIMIT_TX_QUERY = 50
 
@@ -22,9 +22,9 @@ class LcdAPI:
     @classmethod
     def contract_info(cls, contract):
         """Calls the LCD API for contract info for a given contract address.
-        
-        This function is called as part of the staketaxcsv transaction parsing process. 
-        The package code contains an API call to a now deprecated function, so the old 
+
+        This function is called as part of the staketaxcsv transaction parsing process.
+        The package code contains an API call to a now deprecated function, so the old
         code has been replaced with a function that calls two API endpoints that combine
         to return the same data as before
         """
@@ -32,12 +32,12 @@ class LcdAPI:
 
     @classmethod
     def contract_info_from_cosmwasm(cls, contract):
-        """Calls the contract info and contract history endpoints from CosmWasmLcdAPI 
-        and formats them in the way the old /wasm/contracts/{} endpoint returned data. 
-        This allows the staketaxcsv package to parse the data in the same way it parsed 
+        """Calls the contract info and contract history endpoints from CosmWasmLcdAPI
+        and formats them in the way the old /wasm/contracts/{} endpoint returned data.
+        This allows the staketaxcsv package to parse the data in the same way it parsed
         the old data without having to rewrite a ton of functions.
 
-        The two endpoints combined have the same data as what was previously returned by 
+        The two endpoints combined have the same data as what was previously returned by
         the old endpoint, which is now deprecated
 
         - new ["contract_info"] == old ["result"]
@@ -88,6 +88,10 @@ class LcdAPI:
     @classmethod
     def num_txs(cls, wallet_address):
         """Endpoint is deprecated"""
+        return 200
+
+        # TODO: Fix this function.  Changes to LCD api make this no longer work.
+
         data = cls._get_txs(wallet_address, EVENTS_TYPE_SENDER, 0, LIMIT_TX_QUERY, 0)
         num_send = int(data["pagination"]["total"])
 
