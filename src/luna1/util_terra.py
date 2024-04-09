@@ -4,7 +4,6 @@ import base64
 import json
 import logging
 
-import staketaxcsv.common.ibc.api_lcd
 from staketaxcsv.common.ibc.MsgInfoIBC import MsgInfoIBC
 from staketaxcsv.luna1.api_lcd import LcdAPI
 from staketaxcsv.luna1.config_luna1 import localconfig
@@ -77,7 +76,7 @@ def _execute_msg_field(elem, index=0):
         if "msg" in v:
             try:
                 msg[k]["msg"] = json.loads(base64.b64decode(v["msg"]))
-            except UnicodeDecodeError as e:
+            except UnicodeDecodeError:
                 msg[k]["msg"] = {"error_decoding": {}}
 
     return msg

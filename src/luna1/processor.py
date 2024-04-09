@@ -14,7 +14,6 @@ from staketaxcsv.luna1.col4.handle_reward import handle_reward
 from staketaxcsv.luna1.col4.handle_simple import handle_simple, handle_unknown, handle_unknown_detect_transfers
 from staketaxcsv.luna1.col4.handle_swap import handle_swap_msgswap
 from staketaxcsv.luna1.col4.handle_transfer import handle_ibc_transfer, handle_multi_transfer, handle_transfer
-from staketaxcsv.luna1.config_luna1 import localconfig
 from staketaxcsv.luna1.TxInfoTerra import MsgInfo, TxInfoTerra
 
 # execute_type -> tx_type mapping for generic transactions with no tax details
@@ -75,7 +74,6 @@ def process_tx(wallet_address, elem, exporter):
         logging.error("Exception when handling txid=%s, exception=%s", txid, str(e))
         ErrorCounter.increment("exception", txid)
         handle_unknown(exporter, txinfo)
-
 
     return txinfo
 
