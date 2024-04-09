@@ -61,7 +61,13 @@ def _execute_msg(elem, index=0):
 
 
 def _execute_msg_field(elem, index=0):
-    msg_base64 = elem["tx"]["value"]["msg"][index]["value"]["execute_msg"]
+    v = elem["tx"]["value"]["msg"][index]["value"]
+
+    if "msg" in v:
+        return v["msg"]
+
+    msg_base64 = v["execute_msg"]
+    # msg_base64 = elem["tx"]["value"]["msg"][index]["value"]["execute_msg"]
     if type(msg_base64) is dict:
         return msg_base64
 
@@ -133,9 +139,21 @@ def _transfers_log(log, wallet_address, multicurrency=False):
             attributes = event["attributes"]
 
             for i in range(0, len(attributes), 3):
-                recipient = attributes[i]["value"]
-                sender = attributes[i + 1]["value"]
-                amount_string = attributes[i + 2]["value"]
+                amount_string, recipient, sender = None, None, None
+                for j in range(0, 3):
+                    k = attributes[i + j]["key"]
+                    v = attributes[i + j]["value"]
+
+                    if k == "amount":
+                        amount_string = v
+                    if k == "recipient":
+                        recipient = v
+                    if k == "sender":
+                        sender = v
+
+                # recipient = attributes[i]["value"]
+                # sender = attributes[i + 1]["value"]
+                # amount_string = attributes[i + 2]["value"]
 
                 if recipient == wallet_address:
                     if multicurrency:
@@ -405,6 +423,14 @@ def _query_lp_address(addr, txid):
 
 
 def _query_wasm(addr):
+    data = LcdAPI.contract_history(addr)
+
+    init_msg = data["entries"][0]["msg"]
+
+    return init_msg
+
+
+def _query_wasm_deprecated(addr):
     data = LcdAPI.contract_info(addr)
 
     init_msg = _init_msg(data)

@@ -31,6 +31,13 @@ class LcdAPI:
         return LcdAPI.contract_info_from_cosmwasm(contract)
 
     @classmethod
+    def contract_history(cls, contract):
+        uri = "/cosmwasm/wasm/v1/contract/{}/history".format(contract)
+        logging.info("Querying lcd for contract history of %s ...", contract)
+        data = cls._query(uri, {})
+        return data
+
+    @classmethod
     def contract_info_from_cosmwasm(cls, contract):
         """Calls the contract info and contract history endpoints from CosmWasmLcdAPI
         and formats them in the way the old /wasm/contracts/{} endpoint returned data.

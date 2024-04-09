@@ -76,8 +76,6 @@ def process_tx(wallet_address, elem, exporter):
         ErrorCounter.increment("exception", txid)
         handle_unknown(exporter, txinfo)
 
-        if localconfig.debug:
-            raise (e)
 
     return txinfo
 
