@@ -147,7 +147,7 @@ class MsgInfoIBC:
                 continue
 
             # Split into (amount_raw, currency_raw)
-            m = re.search('^(\d+)(.*)', amt_string)
+            m = re.search(r'^(\d+)(.*)', amt_string)
             if not m:
                 raise Exception("Unexpected amt_string: {}".format(amt_string))
             amount_raw, currency_raw = m.group(1), m.group(2)
